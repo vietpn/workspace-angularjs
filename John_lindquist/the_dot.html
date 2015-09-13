@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+    <title></title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="firstController">
+        <input type="text" ng-model="data.message">
+        <h1>{{data.message}}</h1>
+    </div>
+
+    <div ng-controller="secondController">
+        <input type="text" ng-model="data.message">
+        <h1>{{data.message}}</h1>
+    </div>
+</body>
+</html>
+
+<script>
+    myApp.controller("firstController",  ['$scope', function($scope) {
+
+    }]);
+
+    myApp.controller("secondController",  ['$scope', function($scope) {
+
+    }]);
+</script>

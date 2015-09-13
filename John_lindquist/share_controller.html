@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+    <title></title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="firstController">
+        <input type="text" ng-model="data.message">
+        <h1>{{data.message}}</h1>
+    </div>
+
+    <div ng-controller="secondController">
+        <input type="text" ng-model="data.message">
+        <h1>{{reverseMessage(data.message)}}</h1>
+    </div>
+</body>
+</html>
+
+<script>
+    myApp.factory('myService', function(){
+        return {
+            data : {
+                message : "I'm a data from service"
+            }
+        }
+    })
+
+    myApp.controller("firstController",  ['$scope', 'myService', function($scope, myService) {
+        $scope.data = myService.data
+    }]);
+
+    myApp.controller("secondController",  ['$scope', 'myService', function($scope, myService) {
+        $scope.data = myService.data
+
+        $scope.reverseMessage = function(message){
+            return message.split("").reverse().join("")
+        }
+    }]);
+</script>

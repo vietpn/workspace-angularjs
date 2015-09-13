@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+    <style type="text/css">
+        .panel{background: red}
+    </style>
+    <title></title>
+</head>
+<body ng-app="myApp">
+    <div enter="panel" leave>I'm a content</div>
+</body>
+</html>
+
+<script>
+    myApp.directive("enter", function(){
+        return function(scope, element, attrs){
+            element.bind("mouseenter", function(){
+                element.addClass(attrs.enter)
+            })
+        }
+    })
+    myApp.directive("leave", function(){
+        return function(scope, element, attrs){
+            element.bind("mouseleave", function(){
+                element.removeClass(attrs.enter)
+            })
+        }
+    })
+</script>

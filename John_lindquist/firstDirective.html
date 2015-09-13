@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+    <title></title>
+</head>
+<body ng-app="myApp">
+    <superman></superman>
+</body>
+</html>
+
+<script>
+    myApp.directive("superman", function(){
+        return {
+            retrict: "E",
+            template: "<div>Here I am to save the day</div>"
+        }
+    })
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+    <title></title>
+</head>
+<body ng-app="myApp">
+    <superhero strength speed>Superman</superhero>
+</body>
+</html>
+
+<script>
+    myApp.directive("superhero", function(){
+        return {
+            restriction: "E",
+            controller: function($scope){
+                $scope.abilities = []
+
+                this.addStrength = function(){
+                    $scope.abilities.push("strength")
+                }
+
+                this.addSpeed = function(){
+                    $scope.abilities.push("speed")
+                }
+                
+                this.addFlight = function () {
+                    $scope.abilities.push("flight")
+                }
+            },
+            link : function(scope,element){
+                element.bind("mouseenter", function(){
+                    console.log(scope.abilities)
+                })
+            }
+        }
+    })
+
+    myApp.directive("strength", function(){
+        return {
+            require : "superhero",
+            link : function(scope, element, attrs, ctrl){
+                ctrl.addStrength()
+            }
+        }
+    })
+
+    myApp.directive("speed", function(){
+        return {
+            require : "superhero",
+            link : function(scope, element, attrs, ctrl){
+                ctrl.addSpeed()
+            }
+        }
+    })
+</script>

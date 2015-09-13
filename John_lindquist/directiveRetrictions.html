@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+    <title></title>
+</head>
+<body ng-app="myApp">
+    <div superman flash>
+        Hello
+    </div>
+</body>
+</html>
+
+<script>
+    myApp.directive("superman", function(){
+        return {
+            restrict: "A",
+            link : function(){
+                alert("I'm working stronger")
+            }
+        }
+    })
+    myApp.directive("flash", function(){
+        return {
+            restrict: "A",
+            link : function(){
+                alert("I'm working faster")
+            }
+        }
+    })
+</script>
