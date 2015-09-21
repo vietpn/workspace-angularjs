@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+    <phone number="555-1234" network="network" make-call="callHome(number, message)"></phone>
+    <phone number="555-1214" network="network" make-call="callHome(number, message)"></phone>
+    <phone number="555-1224" network="network" make-call="callHome(number, message)"></phone>
+</div>
+</body>
+</html>
+
+<script>
+    var myApp = angular.module('myApp', [])
+
+    myApp.controller('myCtrl', ['$scope', function($scope) {
+        $scope.callHome = function(number, message){
+            alert("Number: " + number + " said: " + message)
+        }
+    }])
+    .directive('phone', function() {
+        return {
+            restrict: "E",
+            scope: {
+                number: "@",
+                network: "=",
+                makeCall: "&"
+            },
+            template: '<div class="panel">Number: {{number}} Network:' +
+                        '<select ng-model="network" ng-options="net for net in networks"></select>' +
+                        '<input type="text" ng-model="value">' +
+                        '<div class="button" ng-click="makeCall({number: number, message: value})">Call Home</div>'+
+                    '</div>',
+            link: function(scope){
+                scope.networks = ["Version", "AT&T", "Sprint"],
+                scope.network = scope.networks[0]
+            }
+        };
+    });
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+    <title></title>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+    <div phone dial="callHome(message)"></div>
+    <div phone dial="callHome(message)"></div>
+    <div phone dial="callHome(message)"></div>
+</div>
+</body>
+</html>
+
+<script>
+    var myApp = angular.module('myApp', [])
+
+    myApp.controller('myCtrl', ['$scope', function($scope) {
+        $scope.callHome = function(message){
+            alert(message)
+        }
+    }])
+    .directive('phone', function() {
+        return {
+            scope: {
+                dial: "&"
+            },
+            template: '<input type="text" ng-model="value">' +
+                    '<div class="button" ng-click="dial({message: value})">Call home!</div>'
+        };
+    });
+</script>

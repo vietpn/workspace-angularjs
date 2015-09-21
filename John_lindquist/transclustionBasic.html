@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+
+    <title></title>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+    <panel>
+        <div class="button">Click me</div>
+    </panel>
+</div>
+</body>
+</html>
+
+<script>
+    var myApp = angular.module('myApp', [])
+
+    myApp.controller('myCtrl', ['$scope', function($scope) {
+
+    }])
+    .directive('panel', function() {
+        return {
+            restrict: "E",
+            transclude: true,
+            template: '<div class="panel" ng-transclude>This is a panel component</div>'
+        }
+    });
+</script>
