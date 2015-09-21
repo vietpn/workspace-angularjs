@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript" src="../myApp.js"></script>
+
+    <title></title>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+    <div class="button" ng-click="myCtrl.sayHi()">Click me!</div>
+</div>
+</body>
+</html>
+
+<script>
+    var myApp = angular.module('myApp', [])
+    var controllers = {}
+    var directives = {}
+
+    controllers.myCtrl =  function($scope) {
+        $scope.sayHi = function(){
+            alert("Hi")
+        }
+
+        return $scope.myCtrl = this
+    }
+
+    directives.panel = function(){
+        return {
+            restrict: "E"
+        }
+    }
+
+    myApp.directive(directives)
+    myApp.controller(controllers)
+</script>
