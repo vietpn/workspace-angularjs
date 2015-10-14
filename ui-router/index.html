@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <script src="../angular.min.js"></script>
+    <script src="angular.min.js"></script>
     <script src="angular-ui-router.js"></script>
     <script>
         var myApp = angular.module('myApp', ['ui.router']);
@@ -12,28 +12,28 @@
             //
             // Now set up the states
             $stateProvider
-                    .state('state1', {
-                        url: "/state1",
-                        templateUrl: "partials/state1.html"
-                    })
-                    .state('state1.list', {
-                        url: "/list",
-                        templateUrl: "partials/state1.list.html",
-                        controller: function($scope) {
-                            $scope.items = ["A", "List", "Of", "Items"];
-                        }
-                    })
-                    .state('state2', {
-                        url: "/state2",
-                        templateUrl: "partials/state2.html"
-                    })
-                    .state('state2.list', {
-                        url: "/list",
-                        templateUrl: "partials/state2.list.html",
-                        controller: function($scope) {
-                            $scope.things = ["A", "Set", "Of", "Things"];
-                        }
-                    })
+                .state('state1', {
+                    url: "/state1",
+                    templateUrl: "./partials/state1.html"
+                })
+                .state('state1.list', {
+                    url: "/list",
+                    templateUrl: "./partials/state1.list.html",
+                    controller: function($scope) {
+                        $scope.items = ["A", "List", "Of", "Items"];
+                    }
+                })
+                .state('state2', {
+                    url: "/state2",
+                    templateUrl: "./partials/state2.html"
+                })
+                .state('state2.list', {
+                    url: "/list",
+                    templateUrl: "./partials/state2.list.html",
+                    controller: function($scope) {
+                        $scope.things = ["A", "Set", "Of", "Things"];
+                    }
+                })
         });
     </script>
 </head>
