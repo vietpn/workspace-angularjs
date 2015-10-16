@@ -1,1 +1,4 @@
 .idea/
+ng-demos/*/bower_components/
+ng-demos/*/node_modules/
+ng-demos/*/.idea/
